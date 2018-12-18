@@ -8,7 +8,12 @@ pipeline {
         branch = "master"
     }
     stages {
-
+    
+        stage("Cleanup Workspace"){
+            steps {
+                deleteDir()
+            }
+        }
         stage('Git Checkout'){
             steps {
                 GitDSL(
