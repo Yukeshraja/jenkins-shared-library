@@ -1,10 +1,10 @@
 
 def call(body) {
-    def pipelineParams= [:]
+    def config= [:]
     body.resolveStrategy = Closure.DELEGATE_FIRST
-    body.delegate = pipelineParams
+    body.delegate = config
     body()
-    checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: '${scmUrl}']]])
+    checkout([$class: 'GitSCM', branches: [[name: "*/${config.branch}"]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: "${config.scmUrl}"]]])
 
 
 }
