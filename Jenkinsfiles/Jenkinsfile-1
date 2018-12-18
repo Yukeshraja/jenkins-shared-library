@@ -7,9 +7,15 @@ pipeline {
     }
     stages {
 
+        stage("Cleanup Workspace"){
+            steps {
+                deleteDir()
+            }
+        }
+
         stage('Git Checkout'){
             steps {
-                Git("https://github.com/spring-projects/spring-petclinic.git", "master")
+                Git('https://github.com/spring-projects/spring-petclinic.git', 'master')
             }
         }
     }
