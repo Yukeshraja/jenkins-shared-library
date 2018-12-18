@@ -16,10 +16,10 @@ pipeline {
         }
         stage('Git Checkout'){
             steps {
-                GitDSL(
-                    scmUrl: 'https://github.com/spring-projects/spring-petclinic.git'  , 
-                    branch: 'master'
-                    )
+                GitDSL {
+                    scmUrl = 'https://github.com/spring-projects/spring-petclinic.git'
+                    branch = 'master'
+                }
             }
         }
     }
