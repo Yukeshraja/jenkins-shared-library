@@ -1,0 +1,21 @@
+@Library('devopscube-demo-library')_
+
+pipeline {
+    agent any
+    environment {
+        deployEnv = 'dev'
+        scmUrl = "https://github.com/spring-projects/spring-petclinic.git" 
+        branch = "master"
+    }
+    stages {
+
+        stage('Git Checkout'){
+            steps {
+                GitDSL(
+                    scmUrl: 'https://github.com/spring-projects/spring-petclinic.git'  , 
+                    branch: 'master'
+                    )
+            }
+        }
+    }
+}
